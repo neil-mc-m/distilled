@@ -30,7 +30,7 @@ class HomePageTest extends WebTestCase
     }
 
     /**
-     * Test if the homepage is served up correctly by checking requesting /home and checking the status code of the response.
+     * Test if the homepage is served up correctly by requesting /home route and checking the status code of the response.
      * Also checks the text content of the body, in this case the heading.
      */
     public function testHomePageControllerWorksWithCorrectRoute()
@@ -51,6 +51,5 @@ class HomePageTest extends WebTestCase
         $client->request('GET', '/away');
 
         $this->assertEquals(404, $client->getResponse()->getStatusCode());
-
     }
 }

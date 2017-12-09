@@ -9,7 +9,7 @@
 namespace Distilled\Controllers;
 
 use Silex\Application;
-
+use GuzzleHttp\Client;
 /**
  * Class HomePageController
  * @package Distilled\Controllers
@@ -25,6 +25,7 @@ class HomePageController
      */
     public function indexAction(Application $app)
     {
+
         return $app['twig']->render('home.html.twig', array());
     }
 }
