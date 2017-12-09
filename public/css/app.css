@@ -56,5 +56,13 @@ article {
     display: flex;
 }
 .flex-item {
-    padding: 2rem;
+    padding: 1rem;
+}
+.link {
+    text-decoration: none;
+}
+li {
+    margin: 2px;
+    padding: 1rem;
+    border: thin solid grey;
 }

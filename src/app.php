@@ -6,10 +6,12 @@
  * Time: 12:16
  */
 use Silex\Provider\TwigServiceProvider;
-require_once __DIR__.'/../vendor/autoload.php';
 
+require_once __DIR__.'/../vendor/autoload.php';
+$dotenv = new Dotenv\Dotenv(__DIR__.'/../');
+$dotenv->load();
 $app = new Silex\Application();
 $app['debug'] = true;
 $app->register(new TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
-$app->get('/home','Distilled\\Controllers\\HomePageController::indexAction');
+$app->get('/home', 'Distilled\\Controllers\\HomePageController::indexAction');
 return $app;
