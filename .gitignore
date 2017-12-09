@@ -3,4 +3,5 @@ vendor/
 public/node_modules/
 .idea/*
 .php_cs.cache
+.env
 
