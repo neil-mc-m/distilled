@@ -7,6 +7,11 @@
     "require-dev": {
         "phpunit/phpunit": "6.5"
     },
+    "autoload": {
+        "psr-4": {
+            "Distilled\\":"src/"
+        }
+    },
     "scripts": {
         "fix": "php php-cs-fixer-v2.phar fix src/"
     }
