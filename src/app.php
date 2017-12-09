@@ -1,0 +1,15 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: neil
+ * Date: 09/12/2017
+ * Time: 12:16
+ */
+use Silex\Provider\TwigServiceProvider;
+require_once __DIR__.'/../vendor/autoload.php';
+
+$app = new Silex\Application();
+$app['debug'] = true;
+$app->register(new TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
+$app->get('/home','Distilled\\Controllers\\HomePageController::indexAction');
+return $app;
