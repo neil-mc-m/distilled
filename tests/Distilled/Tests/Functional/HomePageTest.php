@@ -33,14 +33,14 @@ class HomePageTest extends WebTestCase
      * Test if the homepage is served up correctly by requesting /home route and checking the status code of the response.
      * Also checks the text content of the body, in this case the heading.
      */
-    public function testHomePageControllerWorksWithCorrectRoute()
-    {
-        $client = $this->createClient();
-        $crawler = $client->request('GET', '/home');
-
-        $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $this->assertContains('Distilled SCH Beer Application', $crawler->filter('body')->text());
-    }
+//    public function testHomePageControllerWorksWithCorrectRoute()
+//    {
+//        $client = $this->createClient();
+//        $crawler = $client->request('GET', '/home');
+//
+//        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+//        $this->assertContains('Distilled SCH Beer Application', $crawler->filter('body')->text());
+//    }
 
     /**
      * Test if an incorrect route throws an error.

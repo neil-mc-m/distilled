@@ -5,16 +5,15 @@
     <article>
         <div class="flex-item">
             <h3>{{ random_beer.data.name }}</h3>
-        </div>
-        <div class="flex-item">
+
             <img src="{{ random_beer.data.labels.medium }}" alt="beer pic here">
         </div>
         <div class="flex-item">
-            <p>{{ random_beer.data.style.description }}</p>
+            <p>{{ random_beer.data.description }}</p>
         </div>
         <div class="flex-item">
             <ul>
-                <li><a href="#" class="link">Another beer</a></li>
+                <li><a href="/home" class="link">Another beer</a></li>
                 <li><a href="#" class="link">More from this brewery</a></li>
             </ul>
         </div>

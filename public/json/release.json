@@ -1,54 +1,99 @@
 {
     "message": "Request Successful",
     "data": {
-        "id": "wNFk16",
-        "name": "Electric City IPA",
-        "nameDisplay": "Electric City IPA",
-        "description": "An American Style IPA with a complex variety of hops, and enough body to back them up.",
-        "abv": "7",
-        "ibu": "70",
-        "availableId": 1,
-        "styleId": 30,
+        "id": "rOIp9P",
+        "name": "Bulls Eye",
+        "nameDisplay": "Bulls Eye",
+        "description": "You may see red with this light chestnut beer, but once tasted you'll know you've hit the Bull's Eye. A light chestnut colored typically English bitter ale with a toffee like malty aroma. East Kent Goldings are used to provide a classic, delicate hop aroma that\u2019s sure to please the discerning drinker.",
+        "abv": "3.9",
+        "availableId": 4,
+        "styleId": 4,
         "isOrganic": "N",
         "labels": {
-            "icon": "https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/wNFk16\/upload_o4BQao-icon.png",
-            "medium": "https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/wNFk16\/upload_o4BQao-medium.png",
-            "large": "https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/wNFk16\/upload_o4BQao-large.png"
+            "icon": "https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/rOIp9P\/upload_ABUJj2-icon.png",
+            "medium": "https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/rOIp9P\/upload_ABUJj2-medium.png",
+            "large": "https:\/\/s3.amazonaws.com\/brewerydbapi\/beer\/rOIp9P\/upload_ABUJj2-large.png"
         },
         "status": "verified",
         "statusDisplay": "Verified",
-        "servingTemperature": "cool",
-        "servingTemperatureDisplay": "Cool - (8-12C\/45-54F)",
-        "createDate": "2013-08-11 00:54:55",
-        "updateDate": "2015-12-17 03:55:52",
+        "createDate": "2015-04-27 14:09:34",
+        "updateDate": "2015-12-18 01:23:08",
         "available": {
-            "id": 1,
-            "name": "Year Round",
-            "description": "Available year round as a staple beer."
+            "id": 4,
+            "name": "Seasonal",
+            "description": "Available at the same time of year, every year."
         },
         "style": {
-            "id": 30,
-            "categoryId": 3,
+            "id": 4,
+            "categoryId": 1,
             "category": {
-                "id": 3,
-                "name": "North American Origin Ales",
+                "id": 1,
+                "name": "British Origin Ales",
                 "createDate": "2012-03-21 20:06:45"
             },
-            "name": "American-Style India Pale Ale",
-            "shortName": "American IPA",
-            "description": "American-style India pale ales are perceived to have medium-high to intense hop bitterness, flavor and aroma with medium-high alcohol content. The style is further characterized by floral, fruity, citrus-like, piney, resinous, or sulfur-like American-variety hop character. Note that one or more of these American-variety hop characters is the perceived end, but the hop characters may be a result of the skillful use of hops of other national origins. The use of water with high mineral content results in a crisp, dry beer. This pale gold to deep copper-colored ale has a full, flowery hop aroma and may have a strong hop flavor (in addition to the perception of hop bitterness). India pale ales possess medium maltiness which contributes to a medium body. Fruity-ester flavors and aromas are moderate to very strong. Diacetyl can be absent or may be perceived at very low levels. Chill and\/or hop haze is allowable at cold temperatures. (English and citrus-like American hops are considered enough of a distinction justifying separate American-style IPA and English-style IPA categories or subcategories. Hops of other origins may be used for bitterness or approximating traditional American or English character. See English-style India Pale Ale",
-            "ibuMin": "50",
-            "ibuMax": "70",
-            "abvMin": "6.3",
-            "abvMax": "7.5",
+            "name": "Special Bitter or Best Bitter",
+            "shortName": "Special Bitter",
+            "description": "Special bitter is more robust than ordinary bitter. It has medium body and medium residual malt sweetness. It is deep gold to copper colored. Hop bitterness should be medium and absent of harshness. Hop flavor and aroma character may be evident at the brewer's discretion. Mild carbonation traditionally characterizes draft-cask versions, but in bottled versions, a slight increase in carbon dioxide content is acceptable. Fruity-ester character is acceptable in aroma and flavor. Diacetyl (butterscotch character) is acceptable and characteristic when at very low levels. The absence of diacetyl is also acceptable. Chill haze is allowable at cold temperatures. (English and American hop character may be specified in subcategories.)",
+            "ibuMin": "28",
+            "ibuMax": "40",
+            "abvMin": "4.1",
+            "abvMax": "4.8",
             "srmMin": "6",
             "srmMax": "14",
-            "ogMin": "1.06",
-            "fgMin": "1.012",
-            "fgMax": "1.018",
+            "ogMin": "1.038",
+            "fgMin": "1.006",
+            "fgMax": "1.012",
             "createDate": "2012-03-21 20:06:45",
-            "updateDate": "2015-04-07 15:26:37"
-        }
+            "updateDate": "2015-04-07 15:19:15"
+        },
+        "breweries": [
+            {
+                "id": "eoIkVV",
+                "name": "Jennings Brewery",
+                "nameShortDisplay": "Jennings",
+                "website": "http:\/\/www.jenningsbrewery.co.uk\/",
+                "isOrganic": "N",
+                "status": "verified",
+                "statusDisplay": "Verified",
+                "createDate": "2012-01-03 02:41:59",
+                "updateDate": "2015-12-22 14:49:11",
+                "isMassOwned": "N",
+                "brandClassification": "craft",
+                "locations": [
+                    {
+                        "id": "V79a57",
+                        "name": "Main Brewery",
+                        "streetAddress": "Castle Brewery",
+                        "locality": "Cockermouth",
+                        "region": "Cumbria",
+                        "postalCode": "CA13 9NE",
+                        "phone": "0845 1297185",
+                        "website": "http:\/\/www.jenningsbrewery.co.uk\/",
+                        "latitude": 54.663645,
+                        "longitude": -3.365952,
+                        "isPrimary": "Y",
+                        "inPlanning": "N",
+                        "isClosed": "N",
+                        "openToPublic": "Y",
+                        "locationType": "micro",
+                        "locationTypeDisplay": "Micro Brewery",
+                        "countryIsoCode": "GB",
+                        "status": "verified",
+                        "statusDisplay": "Verified",
+                        "createDate": "2012-01-03 02:41:59",
+                        "updateDate": "2014-07-23 19:11:34",
+                        "country": {
+                            "isoCode": "GB",
+                            "name": "UNITED KINGDOM",
+                            "displayName": "United Kingdom",
+                            "isoThree": "GBR",
+                            "numberCode": 826,
+                            "createDate": "2012-01-03 02:41:33"
+                        }
+                    }
+                ]
+            }
+        ]
     },
     "status": "success"
 }

@@ -54,15 +54,22 @@ section {
 }
 article {
     display: flex;
+
 }
 .flex-item {
+    text-align: center;
+    flex: 1;
     padding: 1rem;
 }
 .link {
+    color: #101010;
     text-decoration: none;
 }
 li {
     margin: 2px;
     padding: 1rem;
     border: thin solid grey;
+}
+li:hover {
+    background-color: #23527c;
 }

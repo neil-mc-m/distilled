@@ -8,6 +8,7 @@
 
 namespace Distilled\Controllers;
 
+use Distilled\Service\ApiService;
 use Silex\Application;
 use GuzzleHttp\Client;
 
@@ -26,20 +27,13 @@ class HomePageController
      */
     public function indexAction(Application $app)
     {
-        $client = new Client([
-            'base_uri' => 'http://api.brewerydb.com/v2/',
-        ]);
-        $response = $client->request(
-            'GET',
-            'beer/random',
-            ['query' => ['key' => getenv('BREWERYDB_API_KEY'), 'hasLabels' => 'Y']]
-        );
-
-        $randomBeer = json_encode(json_decode($response->getBody()->getContents()), JSON_PRETTY_PRINT);
-        file_put_contents('json/release.json', $randomBeer);
-        $beer = json_decode($randomBeer, true);
+        $client = new ApiService(new Client($app['api.baseURI']));
+        $client->setOptions('GET', 'beer/random', ['query' => ['key' => getenv('BREWERYDB_API_KEY'), 'hasLabels' => 'Y', 'withBreweries' => 'Y']]);
+        $response = $client->sendRequest();
+        $validatedBeer = $client->validateResponse($response);
+        file_put_contents('json/release.json', json_encode($validatedBeer, JSON_PRETTY_PRINT));
         return $app['twig']->render('home.html.twig', array(
-            'random_beer' => $beer
+            'random_beer' => $validatedBeer
         ));
     }
 }
