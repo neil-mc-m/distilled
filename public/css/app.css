@@ -47,7 +47,7 @@ table {
     border-spacing: 0;
 }
 header{
-    padding: 3rem;
+    padding: 1rem;
 }
 section {
     border: thin solid lightgrey;
@@ -61,6 +61,9 @@ article {
 }
 fieldset {
     padding: 1rem;
+}
+legend {
+    margin: 0.5rem;
 }
 li {
     margin: 2px;
@@ -89,5 +92,23 @@ a:hover {
 .title {
     text-transform: uppercase;
     text-align: center;
+}
+.search-section {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+input[type=text] {
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+input[type=submit] {
+    margin: 0.5rem;
+    color: white;
+    background-color: #242E38;
+    padding: 1rem;
+    border: thin solid lightgrey;
+    cursor: pointer;
+
+
 }
 

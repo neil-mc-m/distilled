@@ -1,17 +1,16 @@
-<section>
-    <form action="">
-        <h3 class="title">Search</h3>
-        <fieldset>
-            <legend>Please select beer or brewery when making your search.</legend>
-            <input id="search" type="text" name="search">
-            <label for="search">Search</label>
-            <input id="beer" type="radio" name="choice" value="beer" checked required>
-            <label for="beer">Beer</label>
-            <input id="brewery" type="radio" name="choice" value="brewery">
-            <label for="brewery">Brewery</label>
-            <div>
-                <input type="submit">
-            </div>
-        </fieldset>
+<div class="search-section">
+    <form id="search-form" action="/search" method="get">
+
+        <legend>Please select beer or brewery when making your search.</legend>
+        <input id="search" type="text" name="search">
+        <label for="search">Search</label>
+        <input id="beer" type="radio" name="choice" value="beer" checked required>
+        <label for="beer">Beer</label>
+        <input id="brewery" type="radio" name="choice" value="brewery">
+        <label for="brewery">Brewery</label>
+        <div>
+            <input type="submit">
+        </div>
+
     </form>
-</section>
+</div>

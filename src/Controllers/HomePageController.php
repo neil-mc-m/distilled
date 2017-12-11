@@ -9,7 +9,7 @@
 namespace Distilled\Controllers;
 
 use Distilled\Service\ApiService;
-use Distilled\Service\ApiResponseService;
+use Symfony\Component\HttpFoundation\Request;
 use Silex\Application;
 use GuzzleHttp\Client;
 
@@ -26,7 +26,7 @@ class HomePageController
      * @param Application $app
      * @return twig template response
      */
-    public function indexAction(Application $app)
+    public function indexAction(Request $request, Application $app)
     {
         $client = new ApiService(new Client($app['api.baseURI']));
         $client->setOptions('GET', 'beer/random', ['query' => ['key' => getenv('BREWERYDB_API_KEY'), 'hasLabels' => 'Y', 'withBreweries' => 'Y']]);

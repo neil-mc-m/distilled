@@ -18,9 +18,10 @@
 
                     <div class="flex-item">
                         {% if beer.description is defined %}
-                            {{ beer.description }}
+                            {{ beer.description|slice(0, 200) ~ '...' }}
                         {% else %}
                         <p>Theres no description available.</p>
+                        {% endif %}
                     </div>
 
                 {% endfor %}

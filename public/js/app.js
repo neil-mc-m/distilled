@@ -1,22 +1,42 @@
 /**
  * Created by neil on 10/12/2017.
  */
-$(document).ready( function() {
-    $('#brewery-beers').on('click', function(e) {
+$(document).ready(function () {
+    $('#brewery-beers').on('click', function (e) {
         e.preventDefault();
         var id = $(this).closest('a').data('id');
-        var success = function( resp ) {
+        var success = function (resp) {
             console.log(resp);
-            $('#more-beers').html(resp);
+            $('#searchResults').html(resp);
         };
-        var err = function( req, status, err ) {
+        var err = function (req, status, err) {
             console.log(status);
-            $('#more-beers').html(status);
+            $('#searchResults').html(status);
         };
         $.ajax({
             type: 'get',
-            url: '/brewery/'+id
+            url: '/brewery/' + id
 
         }).done(success).fail(err);
     });
+
+    $('#search-form').submit(function (e) {
+            e.preventDefault();
+            var formSerialize = $(this).serialize();
+            var success = function (resp) {
+                console.log(resp);
+                $('#searchResults').html(resp);
+            };
+            var err = function (req, status, err) {
+                console.log(status);
+                $('#formError').html(status);
+            };
+            $.ajax({
+                type: $(this).attr('method'),
+                url: '/search',
+                data: formSerialize
+
+            }).done(success).fail(err)
+        }
+    );
 });
