@@ -22,7 +22,7 @@ class ApiServiceTest extends TestCase
 
     public function testSetOptions()
     {
-        
+
         $stub = $this->getMockBuilder(ApiService::class)
             ->disableOriginalConstructor()
             ->disableOriginalClone()
