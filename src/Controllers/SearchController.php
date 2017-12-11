@@ -8,32 +8,59 @@
 
 namespace Distilled\Controllers;
 
-use Distilled\Service\Validation\FormValidator;
+use Distilled\Service\Validation\RegExpValidator;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
-use Distilled\Service\ApiService;
+use Distilled\Service\Api\ApiService;
 use GuzzleHttp\Client;
+use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * All search actions.
+ *
+ * Class SearchController
+ * @package Distilled\Controllers
+ */
 class SearchController
 {
+
+    /**
+     * Render the search form.
+     *
+     * @param Application $app
+     * @return mixed
+     */
     public function indexAction(Application $app)
     {
         return $app['twig']->render('partials/search_form.html.twig');
     }
+
+    /**
+     * Perform the search.
+     *
+     * @param Request $request
+     * @param Application $app
+     * @return Response
+     */
     public function searchAction(Request $request, Application $app)
     {
-        $query = $request->get('search');
+        $input = $request->get('search');
         $radio = $request->get('choice');
-        $validator = new FormValidator($query);
+        $validator = new RegExpValidator($input);
         $validator->setRules('/^[a-zA-Z0-9\-\ ]+$/');
         if (!$valid = $validator->validate()) {
-            return 'Not a valid form. Try again';
+            return new Response(
+                'Thats an invalid input',
+                Response::HTTP_BAD_REQUEST,
+                array('Content-Type' => 'text/html')
+            );
         };
         $client = new ApiService(new Client($app['api.baseURI']));
-        $client->setOptions('GET', 'search', ['query' => ['key' => getenv('BREWERYDB_API_KEY'), 'withBreweries' => 'Y', 'q' => $query, 'type' => $radio]]);
+        $client->setOptions('GET', 'search', ['query' => ['key' => getenv('BREWERYDB_API_KEY'), 'withBreweries' => 'Y', 'q' => $input, 'type' => $radio]]);
         $response = $client->sendRequest();
-        $searchResults = $client->validateAndExtractResponse($response);
+        $searchResults = $client->getResponseBody($response);
         file_put_contents('json/release.json', json_encode($searchResults, JSON_PRETTY_PRINT));
+
         return $app['twig']->render('partials/search_results.html.twig', array(
             'brewery_beers' => $searchResults
         ));

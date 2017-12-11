@@ -8,7 +8,7 @@
 
 namespace Distilled\Tests\Unit;
 
-use Distilled\Service\ApiService;
+use Distilled\Service\Api\ApiService;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Psr7\Response;
@@ -17,12 +17,8 @@ use PHPUnit\Framework\TestCase;
 
 class ApiServiceTest extends TestCase
 {
-
-
-
     public function testSetOptions()
     {
-
         $stub = $this->getMockBuilder(ApiService::class)
             ->disableOriginalConstructor()
             ->disableOriginalClone()

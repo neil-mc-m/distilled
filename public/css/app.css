@@ -90,6 +90,7 @@ a:hover {
     padding: 1rem;
 }
 .title {
+    padding: 2rem;
     text-transform: uppercase;
     text-align: center;
 }

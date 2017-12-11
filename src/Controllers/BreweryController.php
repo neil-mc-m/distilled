@@ -8,19 +8,31 @@
 
 namespace Distilled\Controllers;
 
-use Distilled\Service\ApiService;
+use Distilled\Service\Api\ApiService;
 use GuzzleHttp\Client;
 use Silex\Application;
 
+/**
+ * Class BreweryController
+ * @package Distilled\Controllers
+ */
 class BreweryController
 {
+
+    /**
+     * Performs a lookup to the Api and renders a template with the results.
+     *
+     * @param Application $app
+     * @param $id
+     * @return mixed
+     */
     public function indexAction(Application $app, $id)
     {
         $client = new ApiService(new Client($app['api.baseURI']));
         $client->setOptions('GET', 'brewery/'.$id.'/beers', ['query' => ['key' => getenv('BREWERYDB_API_KEY')]]);
         $response = $client->sendRequest();
 
-        $breweryBeers = $client->validateAndExtractResponse($response);
+        $breweryBeers = $client->getResponseBody($response);
 
         file_put_contents('json/release.json', json_encode($breweryBeers, JSON_PRETTY_PRINT));
         return $app['twig']->render('partials/search_results.html.twig', array(

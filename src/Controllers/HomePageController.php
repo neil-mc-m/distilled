@@ -8,8 +8,7 @@
 
 namespace Distilled\Controllers;
 
-use Distilled\Service\ApiService;
-use Symfony\Component\HttpFoundation\Request;
+use Distilled\Service\Api\ApiService;
 use Silex\Application;
 use GuzzleHttp\Client;
 
@@ -21,18 +20,19 @@ class HomePageController
 {
 
     /**
-     * Serve the homepage.
+     * Serve the homepage with a random beer.
      *
      * @param Application $app
      * @return twig template response
      */
-    public function indexAction(Request $request, Application $app)
+    public function indexAction(Application $app)
     {
         $client = new ApiService(new Client($app['api.baseURI']));
         $client->setOptions('GET', 'beer/random', ['query' => ['key' => getenv('BREWERYDB_API_KEY'), 'hasLabels' => 'Y', 'withBreweries' => 'Y']]);
         $response = $client->sendRequest();
         $validatedBeer = $client->validateResponseHasKey($response, 'description');
         file_put_contents('json/release.json', json_encode($validatedBeer, JSON_PRETTY_PRINT));
+
         return $app['twig']->render('home.html.twig', array(
             'random_beer' => $validatedBeer
         ));

@@ -6,7 +6,7 @@
  * Time: 22:50
  */
 
-namespace Distilled\Service;
+namespace Distilled\Service\Api;
 
 use GuzzleHttp\Client;
 
@@ -91,7 +91,7 @@ class ApiService
      */
     public function validateResponseHasKey($response, $key)
     {
-        $responseArray = json_decode($response->getBody()->getContents(), true);
+        $responseArray = $this->getResponseBody($response);
         if (isset($responseArray['data'][$key])) {
             return $responseArray;
         } else {
@@ -106,7 +106,7 @@ class ApiService
      * @param $response
      * @return mixed
      */
-    public function validateAndExtractResponse($response)
+    public function getResponseBody($response)
     {
         $beerArray = json_decode($response->getBody()->getContents(), true);
 
