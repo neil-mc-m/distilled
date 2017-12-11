@@ -1,18 +1,27 @@
-<section>
-<div id="more-beers">
-        <h3 class="title">Search Results</h3>
-        {% if brewery_beers is defined %}
-            {% for beer in brewery_beers.data %}
-                <div class="flex-item">
-                    {{ beer.labels.icon }}
-                </div>
-                <div class="flex-item">
-                    {{ beer.name }}
-                </div>
-                <div class="flex-item">
-                    {{ beer.description }}
-                </div>
-            {% endfor %}
-        {% endif %}
-</div>
-</section>
+
+            {% if brewery_beers is defined %}
+                {% for beer in brewery_beers.data %}
+
+                    <div class="flex-item">
+                        {% if beer.labels is defined %}
+                            <img src="{{ beer.labels.icon }}" alt="beer pic here">
+                        {% else %}
+                            <img src="http://via.placeholder.com/65x65" alt="placeholder">
+                        {% endif %}
+                    </div>
+
+                    <div class="flex-item">
+                        {% if beer.name is defined %}
+                            {{ beer.name }}
+                        {% endif %}
+                    </div>
+
+                    <div class="flex-item">
+                        {% if beer.description is defined %}
+                            {{ beer.description }}
+                        {% else %}
+                        <p>Theres no description available.</p>
+                    </div>
+
+                {% endfor %}
+            {% endif %}

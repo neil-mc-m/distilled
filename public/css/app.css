@@ -56,6 +56,7 @@ section {
 article {
     border: thin solid lightgrey;
     display: flex;
+    flex-wrap: wrap;
 
 }
 fieldset {
@@ -74,9 +75,11 @@ a:hover {
 }
 .flex-item {
     text-align: center;
-    flex: 1;
+    flex: 1 0 30%;
     padding: 1rem;
+
 }
+
 .link {
     color: #101010;
     text-decoration: none;
