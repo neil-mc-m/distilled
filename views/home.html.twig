@@ -14,7 +14,18 @@
         <div class="flex-item">
             <ul>
                 <li><a href="/home" class="link">Another beer</a></li>
-                <li><a href="#" class="link">More from this brewery</a></li>
+
+                <li>
+                    {% for brewery in random_beer.data.breweries %}
+                    <a id="brewery-beers"
+                       data-id="{{ brewery.id }}"
+                       href="/brewery/{{ brewery.id }}"
+                       class="link">More from {{ brewery.name }}
+
+                    </a>
+                    {% endfor %}
+                </li>
+
             </ul>
         </div>
     </article>

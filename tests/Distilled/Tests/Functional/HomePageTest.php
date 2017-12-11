@@ -36,7 +36,7 @@ class HomePageTest extends WebTestCase
 //    public function testHomePageControllerWorksWithCorrectRoute()
 //    {
 //        $client = $this->createClient();
-//        $crawler = $client->request('GET', '/home');
+//        $crawler = $client->request('GET', '/');
 //
 //        $this->assertEquals(200, $client->getResponse()->getStatusCode());
 //        $this->assertContains('Distilled SCH Beer Application', $crawler->filter('body')->text());

@@ -50,11 +50,27 @@ header{
     padding: 3rem;
 }
 section {
+    border: thin solid lightgrey;
     padding: 3rem;
 }
 article {
+    border: thin solid lightgrey;
     display: flex;
 
+}
+fieldset {
+    padding: 1rem;
+}
+li {
+    margin: 2px;
+    border: thin solid lightgrey;
+}
+li:hover {
+    background-color: #242E38;
+}
+
+a:hover {
+    color: white;
 }
 .flex-item {
     text-align: center;
@@ -64,12 +80,11 @@ article {
 .link {
     color: #101010;
     text-decoration: none;
-}
-li {
-    margin: 2px;
+    display: block;
     padding: 1rem;
-    border: thin solid grey;
 }
-li:hover {
-    background-color: #23527c;
+.title {
+    text-transform: uppercase;
+    text-align: center;
 }
+

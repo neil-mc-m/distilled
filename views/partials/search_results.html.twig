@@ -1,0 +1,18 @@
+<section>
+<div id="more-beers">
+        <h3 class="title">Search Results</h3>
+        {% if brewery_beers is defined %}
+            {% for beer in brewery_beers.data %}
+                <div class="flex-item">
+                    {{ beer.labels.icon }}
+                </div>
+                <div class="flex-item">
+                    {{ beer.name }}
+                </div>
+                <div class="flex-item">
+                    {{ beer.description }}
+                </div>
+            {% endfor %}
+        {% endif %}
+</div>
+</section>

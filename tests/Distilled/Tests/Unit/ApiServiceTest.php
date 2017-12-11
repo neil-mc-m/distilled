@@ -10,20 +10,27 @@ namespace Distilled\Tests\Unit;
 
 use Distilled\Service\ApiService;
 use GuzzleHttp\Client;
+use GuzzleHttp\ClientInterface;
 use GuzzleHttp\Psr7\Response;
+use PHPUnit\Framework\Constraint\IsInstanceOf;
 use PHPUnit\Framework\TestCase;
 
 class ApiServiceTest extends TestCase
 {
-    public function testCreateApiClientObject()
+
+
+
+    public function testSetOptions()
     {
-        $response = new Response(200);
-        $client = $this->getMockBuilder(Client::class)
+        
+        $stub = $this->getMockBuilder(ApiService::class)
+            ->disableOriginalConstructor()
+            ->disableOriginalClone()
+            ->disableArgumentCloning()
+            ->disallowMockingUnknownTypes()
             ->getMock();
-
-        $apiService = new ApiService($client);
-
-        $apiResponse = $apiService->sendRequest();
-        $this->assertSame($response, $apiResponse);
+        $stub->method('getOptions')
+            ->willReturn('foo');
+        $this->assertEquals('foo', $stub->getOptions());
     }
 }

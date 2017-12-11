@@ -8,7 +8,7 @@
 
 namespace Distilled\Service;
 
-use GuzzleHttp\ClientInterface;
+use GuzzleHttp\Client;
 
 /**
  * Class ApiService
@@ -21,34 +21,34 @@ class ApiService
      * An array of query options to get appended to the query string.
      * @var array
      */
-    private $query = [];
+    protected $query = [];
 
     /**
      * Http method defaults to get.
      * @var string
      */
-    private $method = 'GET';
+    protected $method = 'GET';
 
     /**
      * The endpoint to request
      * @var
      */
-    private $path;
+    protected $path;
 
     /**
      * The Http client, in this case, an instance of Guzzle.
-     * @var ClientInterface
+     * @var Client
      */
-    private $client;
+    protected $client;
 
 
     /**
      * Construct the class with an instance of the client.
      *
      * ApiService constructor.
-     * @param ClientInterface $client
+     * @param Client $client
      */
-    public function __construct(ClientInterface $client)
+    public function __construct(Client $client)
     {
         $this->client = $client;
     }
@@ -67,6 +67,11 @@ class ApiService
         $this->query = $query;
     }
 
+    public function getOptions()
+    {
+        return ['method' => $this->method, 'path' => $this->path, 'query' => $this->query];
+    }
+
     /**
      * Send the request.
      *
@@ -74,26 +79,37 @@ class ApiService
      */
     public function sendRequest()
     {
-        $response = $this->client->request($this->method, $this->path, $this->query);
-        return $response;
+        return $this->client->request($this->method, $this->path, $this->query);
     }
 
     /**
-     * Validate that the response has a description key.
-     * If not, resend the request.
+     * Validate the response has a given key.
+     *
+     * @param $response
+     * @param $key
+     * @return mixed
+     */
+    public function validateResponseHasKey($response, $key)
+    {
+        $responseArray = json_decode($response->getBody()->getContents(), true);
+        if (isset($responseArray['data'][$key])) {
+            return $responseArray;
+        } else {
+            $newBeer = $this->sendRequest();
+            $new = $this->validateResponseHasKey($newBeer, $key);
+            return $new;
+        }
+    }
+
+    /**
      *
      * @param $response
      * @return mixed
      */
-    public function validateResponse($response)
+    public function validateAndExtractResponse($response)
     {
-        $responseArray = json_decode($response->getBody()->getContents(), true);
-        if (isset($responseArray['data']['description'])) {
-            return $responseArray;
-        } else {
-            $newResponse = $this->sendRequest();
-            $new = $this->validateResponse($newResponse);
-            return $new;
-        }
+        $beerArray = json_decode($response->getBody()->getContents(), true);
+
+        return $beerArray;
     }
 }

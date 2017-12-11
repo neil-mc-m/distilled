@@ -15,5 +15,7 @@ $app = new Silex\Application();
 $app['debug'] = true;
 $app['api.baseURI'] = array('base_uri' => 'http://api.brewerydb.com/v2/');
 $app->register(new TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
+$app->get('/', 'Distilled\\Controllers\\HomePageController::indexAction');
 $app->get('/home', 'Distilled\\Controllers\\HomePageController::indexAction');
+$app->get('/brewery/{id}', 'Distilled\\Controllers\\BreweryController::indexAction');
 return $app;
