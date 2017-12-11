@@ -19,7 +19,8 @@
   },
   "scripts": {
     "fix": "php php-cs-fixer-v2.phar fix src/",
-    "lint": "php php-cs-fixer-v2.phar fix tests/",
-    "test": ".\\vendor\\bin\\phpunit --verbose tests"
+    "fixtests": "php php-cs-fixer-v2.phar fix tests/",
+    "test": ".\\vendor\\bin\\phpunit --verbose tests",
+    "serve": "php -S localhost:8000 -t public"
   }
 }
