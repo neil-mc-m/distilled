@@ -8,7 +8,7 @@ installation
 
 environment
 -----------
-* replace the api key in the .env.example file with a real key
+* replace the api key in the .env.example file with a real key and rename it to .env
 
 serve
 -----
