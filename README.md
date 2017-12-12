@@ -2,8 +2,9 @@ Distilled SCH technical test
 ============================
 installation
 ------------
-* clone the repository
-* composer install
+* clone or download the repository
+* navigate to the ditilled directory
+* run **composer install** from the command line
 
 environment
 -----------
@@ -11,13 +12,23 @@ environment
 
 serve
 -----
-* serve the website with  **composer serve**
+* serve the website with **php -S localhost:8000** from within the public directory
  
- commands
- --------
- From the home directory, 
- * **composer fix** to fix the code style to PSR2
- * **composer test** to run the tests (note-this was developed on a windows machine, so you may 
- have to adjust the path in composer.json under the scripts key)
- * **composer fixtests** to fix the tests code style to PSR2
- * **composer serve** to serve the website
+commands
+--------
+From the distilled directory, 
+* **composer fix** to fix the code style to PSR2
+* **composer test** to run the tests (note-this was developed on a windows machine, so you may 
+have to adjust the path in composer.json under the scripts key)
+* **composer fixtests** to fix the tests code style to PSR2
+
+libraries/frameworks used
+-------------------------
+* silex 
+* twig
+* guzzle
+* dotenv
+* jquery
+* phpunit
+
+ 
