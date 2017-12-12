@@ -31,10 +31,8 @@ class BreweryController
         $client = new ApiService(new Client($app['api.baseURI']));
         $client->setOptions('GET', 'brewery/'.$id.'/beers', ['query' => ['key' => getenv('BREWERYDB_API_KEY')]]);
         $response = $client->sendRequest();
-
         $breweryBeers = $client->getResponseBody($response);
 
-        file_put_contents('json/release.json', json_encode($breweryBeers, JSON_PRETTY_PRINT));
         return $app['twig']->render('partials/search_results.html.twig', array(
             'brewery_beers' => $breweryBeers
         ));

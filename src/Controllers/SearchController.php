@@ -45,7 +45,7 @@ class SearchController
     public function searchAction(Request $request, Application $app)
     {
         $input = $request->get('search');
-        $radio = $request->get('choice');
+        $radio = $request->get('choice') ? $request->get('choice') : 'beer';
         $validator = new RegExpValidator($input);
         $validator->setRules('/^[a-zA-Z0-9\-\ ]+$/');
         if (!$valid = $validator->validate()) {
@@ -58,8 +58,7 @@ class SearchController
         $client = new ApiService(new Client($app['api.baseURI']));
         $client->setOptions('GET', 'search', ['query' => ['key' => getenv('BREWERYDB_API_KEY'), 'withBreweries' => 'Y', 'q' => $input, 'type' => $radio]]);
         $response = $client->sendRequest();
-        $searchResults = $client->getResponseBody($response);
-        file_put_contents('json/release.json', json_encode($searchResults, JSON_PRETTY_PRINT));
+        $searchResults = $client->validateSearchHasResults($response);
 
         return $app['twig']->render('partials/search_results.html.twig', array(
             'brewery_beers' => $searchResults

@@ -51,6 +51,10 @@ $(document).ready(function () {
                     400: function () {
                         $('#error').html('Thats not a valid input. Please try again');
                         $('#search-form').trigger('reset')
+                    },
+                    500: function () {
+                        $('#error').html('No results found! Try again.');
+                        $('#search-form').trigger('reset')
                     }
                 }
             }).done(success).fail(err)

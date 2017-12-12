@@ -9,6 +9,8 @@
 namespace Distilled\Service\Api;
 
 use GuzzleHttp\Client;
+use GuzzleHttp\Exception\RequestException;
+use GuzzleHttp\Psr7\Response;
 
 /**
  * Class ApiService
@@ -67,11 +69,6 @@ class ApiService
         $this->query = $query;
     }
 
-    public function getOptions()
-    {
-        return ['method' => $this->method, 'path' => $this->path, 'query' => $this->query];
-    }
-
     /**
      * Send the request.
      *
@@ -79,7 +76,11 @@ class ApiService
      */
     public function sendRequest()
     {
-        return $this->client->request($this->method, $this->path, $this->query);
+        $response = $this->client->request($this->method, $this->path, $this->query);
+        if (!$response->getStatusCode() === 200) {
+            throw new \Exception('Either the resource cant be found or theres a problem with the request.');
+        }
+        return $response;
     }
 
     /**
@@ -102,6 +103,23 @@ class ApiService
     }
 
     /**
+     * Check to see there are some results.
+     *
+     * @param $response
+     * @return Response|mixed
+     */
+    public function validateSearchHasResults($response)
+    {
+        $responseArray = $this->getResponseBody($response);
+        if (isset($responseArray['data'])) {
+            return $responseArray;
+        } else {
+            return new Response(500);
+        }
+    }
+
+    /**
+     * Get the response body and decode to assoc array.
      *
      * @param $response
      * @return mixed

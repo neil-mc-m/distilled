@@ -31,7 +31,6 @@ class HomePageController
         $client->setOptions('GET', 'beer/random', ['query' => ['key' => getenv('BREWERYDB_API_KEY'), 'hasLabels' => 'Y', 'withBreweries' => 'Y']]);
         $response = $client->sendRequest();
         $validatedBeer = $client->validateResponseHasKey($response, 'description');
-        file_put_contents('json/release.json', json_encode($validatedBeer, JSON_PRETTY_PRINT));
 
         return $app['twig']->render('home.html.twig', array(
             'random_beer' => $validatedBeer
